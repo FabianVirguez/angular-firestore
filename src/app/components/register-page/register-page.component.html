@@ -1,0 +1,61 @@
+<div class="form-group">
+  <div class="col-md-4 mx-auto mt-4">
+    <div class="card border-danger">
+      <div class="card-body">
+        <h1 class="text-center">Registro</h1>
+        <form (submit)="onSubmitAddUser()" [formGroup]="forma" novalidate>
+          <div class="form-group">
+            <label for="email">Correo Electronico</label>
+            <input type="email" name="email" id="email" [(ngModel)]="email" class="form-control form-control-sm"
+            [ngClass]="verifyValid('email', forma)" formControlName="email" required>
+            <div *ngIf="!isFieldValid('email', forma)" class="invalid-feedback">
+              <ul>
+                <li *ngIf="!isFieldValid('email', forma)">
+                  El Campo <b>Correo Electronico</b> no es valido!
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Password">Contraseña</label>
+            <input type="password" name="password" id="password" [(ngModel)]="password" class="form-control form-control-sm"
+              [ngClass]="verifyPasswords('password', forma)" required
+              minlength="6" formControlName="password">
+            <div class="invalid-feedback">
+              <ul>
+                <li *ngIf="!isFieldValid('password', forma)">
+                  El minimo de caracteres debe ser superior a 6!
+                </li>
+                <li *ngIf="verifyPasswords('password', forma)">
+                  Las contraseñas no coinciden
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Password">Confirmar Contraseña</label>
+            <input type="password" name="password1" id="password1" [(ngModel)]="password1" class="form-control form-control-sm"
+              [ngClass]="verifyPasswords('password1', forma)" required
+              minlength="6" formControlName="password1">
+            <div class="invalid-feedback" id="confirPassword">
+              <ul>
+                <li *ngIf="!isFieldValid('password1', forma)">
+                  El minimo de caracteres debe ser superior a 6!
+                </li>
+                <li *ngIf="verifyPasswords('password1', forma)">
+                  Las contraseñas no coinciden
+                </li>
+              </ul>
+            </div>
+          </div>
+          <input type="submit" id="btnEnviar" [disabled]="!forma.valid" value="Enviar"
+            class="btn btn-danger btn-block btn-lg">
+        </form>
+        <!--<div class="border-top my-3">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: antiquewhite;">
+  <a class="nav-link" href="#">
+    <img src="/src/app/statics/img/pwclogo.png" class="rounded border-warning">
+    <span class="sr-only">(current)</span>
+  </a>
+
+  <div class="navbar-collapse collapse show" id="navbarColor">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="#"><i class="fa fa-home fa-2x"></i> Inicio <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <div class="nav-link">La respuesta que buscas al alcance de un click</div>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item " *ngIf="!isLogin">
+        <a class="nav-link" href="#" routerLink="/login"><i class="fa fa-user-plus fa-2x"></i> Iniciar Sesión</a>
+      </li>
+      <li class="nav-item " *ngIf="!isLogin">
+        <a class="nav-link" href="#" routerLink="/register"><i class="fa fa-unlock-alt fa-2x"></i> Registro</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link">{{userNombre}}</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogin">
+        <img src="{{userPicture}}" class="rounded-circle">
+      </li>
+      <li class="nav-item" *ngIf="isLogin">
+        <a class="nav-link" href="#">{{userEmail}}</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogin">
+        <a class="nav-link" href="#" (click)="onClickLogout()">Salir</a>
+      </li>
+    </ul>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Ej: Contacto" aria-label="Search">
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
+
+<nav class="navbar-expand-lg navbar-light bg-light">
+  <div class="navbar-collapse collapse show  col-md-auto offset-md-2" id="navbarColor01">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Estatuto Tributario</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Doctrina</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Jurisprudencia
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Corte Constitucional</a>
+          <a class="dropdown-item" href="#">Consejo de Estado</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Normatividad
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Leyes y Decretos Reglamentarios</a>
+          <a class="dropdown-item" href="#">Textos Originales</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Tax & Legal Times
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Home Times</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Lunes</a>
+          <a class="dropdown-item" href="#">Martes</a>
+          <a class="dropdown-item" href="#">Miercoles</a>
+          <a class="dropdown-item" href="#">Jueves</a>
+          <a class="dropdown-item" href="#">Viernes</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contacto</a>
+      </li>
+    </ul>
+  </div>
+</nav>

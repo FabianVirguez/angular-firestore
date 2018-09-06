@@ -1,0 +1,59 @@
+<div class="form-group">
+    <div class="col-md-4 mx-auto mt-4">
+      <div class="card border-warning">
+        <div class="card-body">
+          <h1 class="text-center" >Ingreso de Usuarios</h1>
+          <form (submit)="onSubmitLogin()"  >
+            <div class="form-group" >
+              <label for="email">Correo Electronico</label>
+              <input type="email" name="email" id="email" [(ngModel)]="email"  class="form-control form-control-sm" 
+              #name="ngModel" [ngClass]="{'is-invalid': !name.valid && (name.dirty || name.touched)}" required email>
+              <div *ngIf="name.errors && (name.dirty || name.touched)" class="invalid-feedback">
+                <ul>
+                  <li *ngIf="name.errors.required">
+                      El Campo <b>Correo Electronico</b> es requerido!
+                  </li>
+                  <li *ngIf="name.errors.email">
+                      El Campo <b>Correo Electronico</b> no es valido!
+                  </li>
+                </ul>
+                
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Password">Contraseña</label>
+              <input type="password" name="password" id="password" [(ngModel)]="password" class="form-control form-control-sm" 
+              #pass="ngModel" 
+              [ngClass]="{'is-invalid': !pass.valid && (pass.dirty || pass.touched)}"
+              required minlength="6">
+              <div *ngIf="pass.errors && (pass.dirty || pass.touched)" class="invalid-feedback">
+                <ul>
+                  <li *ngIf="pass.errors.required">
+                    El Campo <b>Contraseña</b> es requerido!
+                  </li>
+                  <li *ngIf="pass.errors">
+                    El minimo de caracteres debe ser superior a 6!
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <input type="submit" [disabled]="pass.invalid || name.invalid"  value="Enviar" class="btn btn-danger btn-block btn-lg">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-4 mx-auto mt-2">
+      <div class="card border-warning">
+        <div class="card-body d-flex justify-content-around">
+          <button class="btn btn-lg btn-google" (click)="onClickGoogleLogin()"><i class="fa fa-google-plus"></i> Google</button>
+          <button disabled class="btn btn-lg btn-facebook"><i class="fa fa-facebook"></i> Facebook</button>
+          <button disabled class="btn btn-lg btn-twitter"><i class="fa fa-twitter"></i> Twittter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{pass.className}}

@@ -1,0 +1,29 @@
+<div *ngIf="tasks?.length > 0; else noTasks" class="col-md-8 offset-md-2">
+  <ul *ngFor="let task of tasks" class="list-group">
+    <li class="list-group-item list-group-item-warning">
+      <strong>{{ task.title }}</strong>: {{ task.description }}
+      <div>
+        <a href="#" (click)="deleteTask($event, task)"><i class="fa fa-trash"></i> Eliminar </a>
+        <a href="#" (click)="editTask($event, task)"><i class="fa fa-pencil"></i> Editar</a>
+      </div>
+
+      <div *ngIf="editState && taskToEdit.id == task.id">
+        <form (ngSubmit)="updateTask(task)">
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <input type="text" class="form-control" name="title" placeholder="Edit Title" [(ngModel)]="task.title">
+            </div>
+            <div class="form-group col-sm-6">
+              <textarea class="form-control" name="description" placeholder="Editar Description" [(ngModel)]="task.description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-danger">Actualizar</button>
+          </div>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>
+<br>
+<ng-template #noTasks>
+  <h5>No se encontraron Tareas.</h5>
+</ng-template>
